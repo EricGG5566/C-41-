@@ -4,6 +4,7 @@ class player{
         this.index = null;
         this.distance = 0;
         this.name = null;
+        this.rank = null;
 
     }
     getCount(){ //obtiene el PlayerCount de manera automatica 
@@ -44,5 +45,13 @@ class player{
     console.log("valor de player info ref:", playerInfoRef);
     console.log("valor de allPlayer", allPlayers);
 }
+   
+    getCarsAtEnd(){
+        database.ref('carsAtEnd').on("value",(data)=>{this.rank = data.val()});
+        
+    }
     
+    static updateCarsAtEnd(rank){
+        database.ref('/').update({carsAtEnd:rank})
+    }
 }

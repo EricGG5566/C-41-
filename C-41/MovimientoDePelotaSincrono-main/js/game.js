@@ -41,11 +41,14 @@ class game{//llave game
    } //llave start
    
    play(){ //llave play
+
+       
        form1.hide();
        textSize(30);
        text("inicia el juego", displayWidth/2,displayHeight+150);
        player.getPlayerInfo();
-
+       player1.getCarsAtEnd();
+      
        if(allPlayers !== undefined){ //llave play/if1
            image(track1, 0 , - displayHeight * 4, displayWidth, displayHeight * 5 );
            var index= 0;
@@ -76,8 +79,11 @@ class game{//llave game
           if(player1.distance > 2500){//llave if distancia
             console.log("distancia del jugador antes");
             gameState = 2;
+            player1.rank +=1;
+            player.updateCarsAtEnd(player1.rank);
             console.log("distancia del jugador después");
             console.log("estado actual del juego", gameState);
+
           }//llve if distancia
           
           
@@ -85,9 +91,12 @@ class game{//llave game
            drawSprites();
    } //llave play
 
+
+
    end(){//llave end
       
     console.log("el juego terminó");
+    console.log("ranking = ", player1.rank);
 
    }//llave end
 
